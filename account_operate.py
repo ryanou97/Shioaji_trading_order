@@ -4,19 +4,10 @@ import shioaji as sj
 import account
 
 
-# 建立Shioaji物件
 # simulation=True為模擬帳戶帳號及密碼，可模擬時間為週一到週五8:00-20:00
 #################################
 
 # https://sinotrade.github.io/zh_TW/
-
-
-# api = sj.Shioaji(simulation=False) # simulation=True 為模擬模式
-# my_api_key = "input your Shioaji API key"
-# my_secret_key = "input your Shioaji API secret key"
-api = account.api
-my_api_key = account.my_api_key
-my_secret_key = account.my_secret_key
 
 
 # 登入
@@ -68,6 +59,15 @@ def account_profitloss(api):
 
 
 if __name__ == '__main__':
+    
+    
+    # api = sj.Shioaji(simulation=False) # simulation=True 為模擬模式
+    # my_api_key = "input your Shioaji API key"
+    # my_secret_key = "input your Shioaji API secret key"
+    api = account.api
+    my_api_key = account.my_api_key
+    my_secret_key = account.my_secret_key
+    
     
     accounts = login(api, my_api_key, my_secret_key)
     print(accounts)
