@@ -1,6 +1,4 @@
 
-
-
 import pandas as pd
 import shioaji as sj
 import account
@@ -13,36 +11,35 @@ import account
 # https://sinotrade.github.io/zh_TW/
 
 
-api = sj.Shioaji(simulation=True) # 模擬模式
-
-# my_api_key = "input your Shioaji API key"
-# my_secret_key = "input your Shioaji API secret key"
-
-accounts = api.login(
-    api_key = my_api_key,
-    secret_key = my_secret_key
-)
-print("Accounts:", accounts)
-
-
-
+if __name__ == '__main__':
+    api = sj.Shioaji(simulation=False) # 模擬模式
+    
+    # my_api_key = "input your Shioaji API key"
+    # my_secret_key = "input your Shioaji API secret key"
+    
+    accounts = api.login(
+        api_key = my_api_key,
+        secret_key = my_secret_key
+    )
+    print("Accounts Infomation:", accounts)
 
 
-"""
+
+
 ##### 保證金餘額 #####
 account_margin = api.margin(api.futopt_account)
-df_margin = pd.DataFrame(account_margin.data())
+df_margin = pd.DataFrame(account_margin)
 print("account_margin: ", df_margin)
 
+
 ##### 未平倉部位 #####
-positions = api.get_account_openposition(query_type='1', account=api.futopt_account)
-df_positions = pd.DataFrame(positions.data())
-print(df_positions)
+positions = api.list_positions(api.futopt_account)
+df_positions = pd.DataFrame(p.__dict__ for p in positions)
+print("account_position: ", df_positions)
 
 
 ##### 交易損益 #####
-st_date = (date.today() - timedelta(days=60)).strftime('%Y%m%d')
-settle_profitloss = api.get_account_settle_profitloss(summary='Y', start_date=st_date)
-print(settle_profitloss)
-"""
+profitloss = api.list_profit_loss(api.stock_account,'2020-05-05','2020-05-30')
+df_profitloss = pd.DataFrame(pnl.__dict__ for pnl in profitloss)
+print(df_profitloss)
 
