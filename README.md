@@ -14,8 +14,8 @@
 
 ### 前置作業
 
-1. 申請永豐的證券和期權帳戶，並開通API功能
-2. 並獲得 API token 和 API secret key，我把這兩個資訊放在自己的外部檔案，使用時可以直接把他們添加到account_operate.py內
+1. 申請永豐的證券和期權帳戶，並開通API功能。
+2. 並獲得 API token 和 API secret key，我把這兩個資訊放在自己的外部檔案，使用時可以直接把他們添加到account_operate.py。
 
 ### 功能
 
